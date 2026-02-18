@@ -10,9 +10,12 @@ interface NewsContextType {
   loadMore: () => void;
 }
 
+// контекст
 const NewsContext = createContext<NewsContextType | undefined>(undefined);
 
+// провайдер
 export const NewsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // состояния
   const [news, setNews] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -48,6 +51,7 @@ export const NewsProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, [loading, hasMore]);
 
+  // изменениие состояния
   const loadMore = useCallback(() => {
     fetchNews();
   }, [fetchNews]);
@@ -56,6 +60,7 @@ export const NewsProvider: React.FC<{ children: React.ReactNode }> = ({ children
     fetchNews();
   }, []);
 
+
   return (
     <NewsContext.Provider value={{ news, loading, error, hasMore, loadMore }}>
       {children}
@@ -63,8 +68,9 @@ export const NewsProvider: React.FC<{ children: React.ReactNode }> = ({ children
   );
 };
 
+// используем контекст
 export const useNews = () => {
-  const context = useContext(NewsContext);
+  const context = useContext(NewsContext); // читаем состояние
   if (context === undefined) {
     throw new Error('useNews должен использоваться внутри NewsProvider');
   }
