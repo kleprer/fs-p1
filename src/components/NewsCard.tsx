@@ -13,8 +13,7 @@ const NewsCard: React.FC<Props> = ({ item, index }) => {
       borderRadius: '8px',
       padding: '15px',
       margin: '10px 0',
-      background: 'white',
-      boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+      background: 'white'
     }}>
       <h3 style={{ margin: '0 0 10px 0', color: '#333' }}>
         {index + 1}. {item.title} 
@@ -30,7 +29,6 @@ const NewsCard: React.FC<Props> = ({ item, index }) => {
             <span key={tag} style={{
               background: '#e0e0e0',
               padding: '3px 8px',
-              borderRadius: '12px',
               marginRight: '5px',
               fontSize: '12px'
             }}>
@@ -40,8 +38,7 @@ const NewsCard: React.FC<Props> = ({ item, index }) => {
         </div>
         
         <div style={{ display: 'flex', gap: '15px', color: '#666' }}>
-          <span>👍 {item.reactions.likes}</span>
-          <span>👎 {item.reactions.dislikes}</span>
+          <span> likes: {item.reactions.likes}</span>
         </div>
       </div>
     </div>

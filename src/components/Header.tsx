@@ -8,26 +8,25 @@ interface Props {
 const Header: React.FC<Props> = ({ version, onToggle }) => {
   return (
     <header style={{
-      background: version === 'context' ? '#2196F3' : '#9C27B0',
-      color: 'white',
+      color: 'black',
       padding: '20px',
+      margin: '20px',
       textAlign: 'center'
     }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '800px', margin: '0 auto' }}>
-        <h1 style={{ margin: 0 }}>
-          📰 News Feed ({version === 'context' ? 'Context API' : 'Redux Toolkit'})
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '750px', margin: '0 auto' }}>
+        <h1 style={{ margin: 0, fontSize: '24px'}}>
+          Лента новостей ({version === 'context' ? 'context API' : 'redux toolkit'})
         </h1>
         <button 
           onClick={onToggle}
           style={{
-            padding: '10px 20px',
+            padding: '10px 10px',
             background: 'white',
             border: 'none',
             borderRadius: '5px',
             cursor: 'pointer',
             fontSize: '14px',
-            fontWeight: 'bold',
-            color: version === 'context' ? '#2196F3' : '#9C27B0'
+            fontWeight: 'bold'
           }}
         >
           Переключить на {version === 'context' ? 'Redux' : 'Context'}
